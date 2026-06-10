@@ -637,7 +637,7 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
 
         {/* Institutional detail view footer */}
         <footer style={{ background: 'var(--cu-navy-dark)', color: '#ffffff', padding: '75px 0 35px', borderTop: '1.5px solid rgba(255,255,255,0.04)', marginTop: 'auto' }}>
-          <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr', gap: '50px', marginBottom: '45px' }}>
+          <div className="container footer-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <img src="/christ_logo.png" alt="Christ University Logo" style={{ height: '44px', objectFit: 'contain', filter: 'brightness(0) invert(1)', alignSelf: 'flex-start' }} />
               <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
@@ -694,14 +694,14 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '85px' }}>
           
           {/* Logo Brand */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div className="header-logo-container">
             <img 
               src="/christ_logo.png" 
               alt="Christ University Logo" 
-              style={{ height: '52px', objectFit: 'contain' }} 
+              className="header-logo-img" 
             />
             <div style={{ borderLeft: '1.5px solid rgba(12, 35, 64, 0.15)', paddingLeft: '14px' }}>
-              <div style={{ fontSize: '0.65rem', color: 'var(--cu-navy)', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 800, lineHeight: 1.3 }}>
+              <div className="header-dept-title">
                 Department of<br />Computer Science
               </div>
             </div>
@@ -1203,7 +1203,7 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
 
               {/* Footer for Planner view */}
               <footer style={{ background: 'var(--cu-navy-dark)', color: '#ffffff', padding: '75px 0 35px', borderTop: '1.5px solid rgba(255,255,255,0.04)', marginTop: 'auto' }}>
-                <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr', gap: '50px', marginBottom: '45px' }}>
+                <div className="container footer-grid">
                   
                   {/* Col 1: Brand */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>

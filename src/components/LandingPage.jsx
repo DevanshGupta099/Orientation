@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, 
   Terminal, 
@@ -18,10 +18,15 @@ import {
   BookOpen,
   UserCheck,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function LandingPage({ onEnterPortal }) {
+  // Mobile navigation expansion state
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   // Programs Accordion Expand/Collapse states
   const [mcaExpanded, setMcaExpanded] = useState(false);
   const [aimlExpanded, setAimlExpanded] = useState(false);
@@ -165,21 +170,21 @@ export default function LandingPage({ onEnterPortal }) {
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '85px' }}>
           
           {/* Logo Brand with Official Christ University Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div className="header-logo-container">
             <img 
               src="/christ_logo.png" 
               alt="Christ University Logo" 
-              style={{ height: '52px', objectFit: 'contain' }} 
+              className="header-logo-img" 
             />
             <div style={{ borderLeft: '1.5px solid rgba(12, 35, 64, 0.15)', paddingLeft: '14px' }}>
-              <div style={{ fontSize: '0.65rem', color: 'var(--cu-navy)', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 800, lineHeight: 1.3 }}>
+              <div className="header-dept-title">
                 Department of<br />Computer Science
               </div>
             </div>
           </div>
 
           {/* Navigation Links */}
-          <nav style={{ display: 'flex', gap: '28px', alignItems: 'center' }}>
+          <nav className="header-nav">
             <a href="#about-dept" className="nav-link">Legacy & Ethos</a>
             <a href="#director-desk" className="nav-link">Welcome Message</a>
             <a href="#roadmap" className="nav-link">Curriculum Roadmap</a>
@@ -194,15 +199,49 @@ export default function LandingPage({ onEnterPortal }) {
               Interactive Planner
             </motion.button>
           </nav>
+
+          {/* Hamburger button for mobile/tablet screen widths */}
+          <button 
+            className="hamburger-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </motion.header>
+
+      {/* Mobile Navigation Menu Dropdown overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            className="mobile-nav-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <a href="#about-dept" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Legacy & Ethos</a>
+            <a href="#director-desk" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Welcome Message</a>
+            <a href="#roadmap" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Curriculum Roadmap</a>
+            <a href="#programs" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Programs</a>
+            <button 
+              onClick={() => { setMobileMenuOpen(false); onEnterPortal(); }}
+              className="btn-primary" 
+              style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }}
+            >
+              Interactive Planner
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section style={{ padding: '70px 0 90px', position: 'relative' }}>
         {/* Soft Background glow to enhance blend */}
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '50%', background: 'radial-gradient(circle, rgba(224,242,254,0.3) 0%, rgba(255,253,240,0.2) 60%, transparent 100%)', pointerEvents: 'none', zIndex: -1 }} />
 
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '50px', alignItems: 'center' }}>
+        <div className="container hero-grid">
           
           {/* Left Hero Block */}
           <motion.div 
@@ -227,7 +266,7 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.p>
 
             {/* University Stats row */}
-            <motion.div variants={itemVariants} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '40px', maxWidth: '500px' }}>
+            <motion.div variants={itemVariants} className="hero-stats-row">
               <div style={{ borderLeft: '3px solid var(--cu-gold)', paddingLeft: '14px', background: 'rgba(170, 124, 17, 0.02)', padding: '6px 12px', borderRadius: '0 8px 8px 0' }}>
                 <strong style={{ display: 'block', fontSize: '1.4rem', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>25+ Years</strong>
                 <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600 }}>Department Legacy</span>
@@ -242,7 +281,7 @@ export default function LandingPage({ onEnterPortal }) {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <motion.div variants={itemVariants} className="hero-btns-row">
               <motion.button 
                 onClick={() => onEnterPortal()} 
                 className="btn-primary" 
@@ -271,7 +310,7 @@ export default function LandingPage({ onEnterPortal }) {
             style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', width: '100%', minHeight: '560px', justifyContent: 'center' }}
           >
             {/* Elegant 3D Slider Container */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '340px', height: '480px' }}>
+            <div className="slider-container">
               {carouselPosters.map((poster, index) => {
                 const state = getCardState(index);
                 return (
@@ -385,7 +424,7 @@ export default function LandingPage({ onEnterPortal }) {
       <section id="about-dept" style={{ padding: '85px 0', borderTop: '1px solid rgba(12, 35, 64, 0.06)', background: 'rgba(224, 242, 254, 0.25)', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(to bottom, rgba(224, 242, 254, 0.15) 0%, rgba(255, 253, 240, 0.15) 100%)', pointerEvents: 'none' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.05fr', gap: '60px', alignItems: 'center' }}>
+          <div className="about-grid">
             
             <motion.div
               initial="hidden"
@@ -413,7 +452,7 @@ export default function LandingPage({ onEnterPortal }) {
 
             {/* Cards Grid with Framer Motion Staggered in View */}
             <motion.div 
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '18px' }}
+              className="about-cards-grid"
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
@@ -448,7 +487,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* NEW: Director's Desk Section */}
       <section id="director-desk" style={{ padding: '90px 0', background: '#ffffff', position: 'relative' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '50px', alignItems: 'center' }}>
+          <div className="director-grid">
             
             <motion.div 
               initial="hidden"
@@ -552,14 +591,14 @@ export default function LandingPage({ onEnterPortal }) {
 
           {/* Roadmap Horizontal Grid with Staggered animations */}
           <motion.div 
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '22px', position: 'relative' }}
+            className="roadmap-grid"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
           >
             {/* Visual connecting line behind */}
-            <div style={{ position: 'absolute', top: '38px', left: '12%', right: '12%', height: '2.5px', background: 'repeating-linear-gradient(to right, var(--cu-gold-bright) 0px, var(--cu-gold-bright) 6px, transparent 6px, transparent 12px)', zIndex: 1 }} />
+            <div className="roadmap-line" />
 
             {[
               { stage: "Stage 1", title: "Orientation & Induction", status: "Active Phase", desc: "Policy briefings, AI ethics introduction, computational primers, and student scholarship awareness." },
@@ -805,7 +844,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* Section 3: Placements & Industry Links */}
       <section id="placements" style={{ padding: '85px 0', borderTop: '1px solid rgba(12, 35, 64, 0.06)', borderBottom: '1px solid rgba(12, 35, 64, 0.06)', background: 'rgba(224, 242, 254, 0.18)', position: 'relative' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '50px', alignItems: 'center' }}>
+          <div className="placements-grid">
             
             <motion.div
               initial="hidden"
@@ -870,7 +909,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* Section 4: Infrastructure & Outbound training */}
       <section id="campus-life" style={{ padding: '90px 0', background: '#ffffff' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.05fr', gap: '50px', alignItems: 'center' }}>
+          <div className="campus-grid">
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               {[
@@ -924,7 +963,7 @@ export default function LandingPage({ onEnterPortal }) {
 
       {/* Footer */}
       <footer style={{ background: 'var(--cu-navy-dark)', color: '#ffffff', padding: '75px 0 35px', borderTop: '1.5px solid rgba(255,255,255,0.04)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1fr', gap: '50px', marginBottom: '45px' }}>
+        <div className="container footer-grid">
           
           {/* Col 1: Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
@@ -984,15 +1023,6 @@ export default function LandingPage({ onEnterPortal }) {
           </span>
         </div>
       </footer>
-
-      {/* Accordion and Grid Media Query Overrides */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @media (max-width: 900px) {
-          .programs-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}} />
 
     </div>
   );
