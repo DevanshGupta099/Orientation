@@ -466,7 +466,7 @@ h2, h3 {
 /* Sessions Responsive Grid Layout */
 .sessions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 26px;
   width: 100%;
 }
@@ -474,6 +474,14 @@ h2, h3 {
 @media (max-width: 768px) {
   .sessions-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* Orientations page responsive overrides */
+@media (max-width: 640px) {
+  .academic-panel {
+    border-radius: 12px !important;
   }
 }
 

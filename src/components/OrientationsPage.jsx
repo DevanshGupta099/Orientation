@@ -274,7 +274,10 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
     const matchQuery = searchQuery.trim() === '' || 
       session.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       session.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      session.topics.some(t => t.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      session.topics.some(t => {
+        const text = typeof t === 'object' ? `${t.title} ${t.detail || ''}` : t;
+        return text.toLowerCase().includes(searchQuery.toLowerCase());
+      }) ||
       session.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       session.venue.toLowerCase().includes(searchQuery.toLowerCase());
     
@@ -496,24 +499,89 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
               <div className="academic-panel" style={{ padding: '30px', background: '#ffffff', border: '1px solid var(--card-border)' }}>
                 <h3 style={{ fontSize: '1.2rem', color: 'var(--cu-navy-dark)', fontWeight: 800, marginBottom: '16px', fontFamily: 'var(--font-serif)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <BookOpen size={20} style={{ color: 'var(--cu-gold-bright)' }} />
-                  Session Coverage & Objectives
+                  Session Overview
                 </h3>
                 <p style={{ color: 'var(--text-main)', fontSize: '0.94rem', lineHeight: 1.75 }}>
                   {session.description}
                 </p>
               </div>
 
-              {/* Takeaways Syllabus lists */}
-              <div className="academic-panel" style={{ padding: '30px', background: '#ffffff', border: '1px solid var(--card-border)' }}>
-                <h3 style={{ fontSize: '1.2rem', color: 'var(--cu-navy-dark)', fontWeight: 800, marginBottom: '14px', fontFamily: 'var(--font-serif)' }}>
-                  Orientation Syllabus Topics
-                </h3>
-                <ul style={{ listStyleType: 'square', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.86rem', color: 'var(--text-main)' }}>
-                  {session.topics.map((topic, idx) => (
-                    <li key={idx} style={{ lineHeight: 1.5 }}>{topic}</li>
+              {/* In-Depth Coverage */}
+              {session.detailedContent && (
+                <div className="academic-panel" style={{ padding: '30px', background: '#ffffff', border: '1px solid var(--card-border)' }}>
+                  <h3 style={{ fontSize: '1.2rem', color: 'var(--cu-navy-dark)', fontWeight: 800, marginBottom: '16px', fontFamily: 'var(--font-serif)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <BookOpen size={20} style={{ color: 'var(--cu-navy)' }} />
+                    In-Depth Session Coverage
+                  </h3>
+                  {session.detailedContent.split('\n\n').map((paragraph, idx) => (
+                    <p key={idx} style={{ color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: 1.8, marginBottom: idx < session.detailedContent.split('\n\n').length - 1 ? '16px' : 0 }}>
+                      {paragraph}
+                    </p>
                   ))}
-                </ul>
+                </div>
+              )}
+
+              {/* Topics Breakdown Cards */}
+              <div className="academic-panel" style={{ padding: '30px', background: '#ffffff', border: '1px solid var(--card-border)' }}>
+                <h3 style={{ fontSize: '1.2rem', color: 'var(--cu-navy-dark)', fontWeight: 800, marginBottom: '18px', fontFamily: 'var(--font-serif)' }}>
+                  Session Topics & Breakdown
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  {session.topics.map((topic, idx) => (
+                    <div key={idx} style={{
+                      background: 'var(--bg-secondary)',
+                      borderRadius: '12px',
+                      padding: '16px 18px',
+                      borderLeft: '3px solid var(--cu-gold)',
+                      transition: 'background 0.2s'
+                    }}>
+                      <strong style={{ fontSize: '0.88rem', color: 'var(--cu-navy-dark)', display: 'block', marginBottom: '4px' }}>
+                        {typeof topic === 'object' ? topic.title : topic}
+                      </strong>
+                      {typeof topic === 'object' && topic.detail && (
+                        <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.6, margin: 0 }}>
+                          {topic.detail}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Key Takeaways */}
+              {session.keyTakeaways && session.keyTakeaways.length > 0 && (
+                <div className="academic-panel" style={{ padding: '30px', background: '#ffffff', border: '1px solid var(--card-border)' }}>
+                  <h3 style={{ fontSize: '1.2rem', color: 'var(--cu-navy-dark)', fontWeight: 800, marginBottom: '14px', fontFamily: 'var(--font-serif)' }}>
+                    Key Takeaways
+                  </h3>
+                  <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {session.keyTakeaways.map((item, idx) => (
+                      <li key={idx} style={{ fontSize: '0.86rem', color: 'var(--text-main)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                        <span style={{ color: 'var(--cu-gold)', fontWeight: 800, fontSize: '0.9rem', lineHeight: 1.5, flexShrink: 0 }}>✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Learning Objectives Banner */}
+              {session.learningObjectives && (
+                <div style={{
+                  background: 'linear-gradient(135deg, var(--cu-navy) 0%, var(--cu-navy-dark) 100%)',
+                  borderRadius: '16px',
+                  padding: '28px 30px',
+                  color: '#ffffff',
+                  boxShadow: '0 8px 24px rgba(12, 35, 64, 0.15)'
+                }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 800, marginBottom: '10px', fontFamily: 'var(--font-serif)', color: 'var(--cu-gold-bright)' }}>
+                    🎯 Learning Objectives
+                  </h3>
+                  <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.9)', margin: 0 }}>
+                    {session.learningObjectives}
+                  </p>
+                </div>
+              )}
 
             </div>
 
@@ -793,7 +861,7 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
                     </div>
 
                     {/* Search input box */}
-                    <div style={{ position: 'relative', width: '260px' }}>
+                    <div style={{ position: 'relative', width: '260px', minWidth: '160px', flex: '0 1 260px' }}>
                       <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                       <input 
                         type="text" 
@@ -1347,6 +1415,11 @@ export default function OrientationsPage({ initialFilters, onBackToHome }) {
         @media (max-width: 900px) {
           .detail-view-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .detail-poster-img-container:hover .detail-poster-overlay {
+            opacity: 1 !important;
           }
         }
       `}} />

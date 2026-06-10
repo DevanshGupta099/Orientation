@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Terminal, 
-  Cpu, 
-  MapPin, 
-  Award, 
+import {
+  ArrowRight,
+  Terminal,
+  Cpu,
+  MapPin,
+  Award,
   GraduationCap,
   Building,
   CheckCircle,
@@ -46,10 +46,10 @@ export default function LandingPage({ onEnterPortal }) {
       day: 2
     },
     {
-      url: "/posters/27May2026_10-11AM_ResponsibleUseOfAI.png",
-      title: "Responsible Use of Generative AI",
-      speaker: "Dr. Deepa V Jose",
-      day: 3
+      url: "posters/1230PM-1PM_25May2026_ChristiteValues-ProfessionalEthics.png",
+      title: "Christite Values, Academic Standards & Professional Ethics",
+      speaker: "Dr. Gobi R",
+      day: 1
     },
     {
       url: "/posters/2pm  3pm (1080 px x 1515px) .png",
@@ -64,7 +64,7 @@ export default function LandingPage({ onEnterPortal }) {
       day: 2
     },
     {
-      url: "/posters/27May11AM-12Noon_BeyondAcademics_ClubsCentresAndFests.png",
+      url: "/posters/senior.png",
       title: "Beyond Academics: Clubs & Fests",
       speaker: "Student Council Members",
       day: 3
@@ -141,8 +141,8 @@ export default function LandingPage({ onEnterPortal }) {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: { type: 'spring', stiffness: 90, damping: 16 }
     }
@@ -150,8 +150,8 @@ export default function LandingPage({ onEnterPortal }) {
 
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 30 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: { type: 'spring', stiffness: 80, damping: 15, duration: 0.5 }
     }
@@ -159,22 +159,22 @@ export default function LandingPage({ onEnterPortal }) {
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
-      
+
       {/* Header/Navbar */}
-      <motion.header 
+      <motion.header
         className="glass-header"
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       >
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '85px' }}>
-          
+
           {/* Logo Brand with Official Christ University Logo */}
           <div className="header-logo-container">
-            <img 
-              src="/christ_logo.png" 
-              alt="Christ University Logo" 
-              className="header-logo-img" 
+            <img
+              src="/christ_logo.png"
+              alt="Christ University Logo"
+              className="header-logo-img"
             />
             <div style={{ borderLeft: '1.5px solid rgba(12, 35, 64, 0.15)', paddingLeft: '14px' }}>
               <div className="header-dept-title">
@@ -189,9 +189,9 @@ export default function LandingPage({ onEnterPortal }) {
             <a href="#director-desk" className="nav-link">Welcome Message</a>
             <a href="#roadmap" className="nav-link">Curriculum Roadmap</a>
             <a href="#programs" className="nav-link">Programs</a>
-            <motion.button 
+            <motion.button
               onClick={() => onEnterPortal()}
-              className="btn-primary" 
+              className="btn-primary"
               style={{ padding: '9px 22px', fontSize: '0.82rem', borderRadius: '8px' }}
               whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(15, 46, 92, 0.18)' }}
               whileTap={{ scale: 0.95 }}
@@ -201,7 +201,7 @@ export default function LandingPage({ onEnterPortal }) {
           </nav>
 
           {/* Hamburger button for mobile/tablet screen widths */}
-          <button 
+          <button
             className="hamburger-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
@@ -214,7 +214,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* Mobile Navigation Menu Dropdown overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="mobile-nav-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -225,9 +225,9 @@ export default function LandingPage({ onEnterPortal }) {
             <a href="#director-desk" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Welcome Message</a>
             <a href="#roadmap" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Curriculum Roadmap</a>
             <a href="#programs" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Programs</a>
-            <button 
+            <button
               onClick={() => { setMobileMenuOpen(false); onEnterPortal(); }}
-              className="btn-primary" 
+              className="btn-primary"
               style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }}
             >
               Interactive Planner
@@ -242,9 +242,9 @@ export default function LandingPage({ onEnterPortal }) {
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '50%', background: 'radial-gradient(circle, rgba(224,242,254,0.3) 0%, rgba(255,253,240,0.2) 60%, transparent 100%)', pointerEvents: 'none', zIndex: -1 }} />
 
         <div className="container hero-grid">
-          
+
           {/* Left Hero Block */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="show"
@@ -261,7 +261,7 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.h1>
 
             <motion.p variants={itemVariants} style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 1.7, marginBottom: '32px', maxWidth: '530px' }}>
-              Welcome to the Department of Computer Science. We cultivate technical expertise, scientific innovation, and ethical leadership in postgraduate computer science professionals. 
+              Welcome to the Department of Computer Science. We cultivate technical expertise, scientific innovation, and ethical leadership in postgraduate computer science professionals.
               Explore the comprehensive academic planning of the 2026-28 cohort.
             </motion.p>
 
@@ -282,18 +282,18 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-btns-row">
-              <motion.button 
-                onClick={() => onEnterPortal()} 
-                className="btn-primary" 
+              <motion.button
+                onClick={() => onEnterPortal()}
+                className="btn-primary"
                 style={{ padding: '14px 30px', borderRadius: '8px', fontSize: '0.9rem' }}
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
               >
                 Enter Schedule Planner <ArrowRight size={15} />
               </motion.button>
-              <motion.a 
-                href="#roadmap" 
-                className="btn-secondary" 
+              <motion.a
+                href="#roadmap"
+                className="btn-secondary"
                 style={{ padding: '14px 30px', borderRadius: '8px', fontSize: '0.9rem', textDecoration: 'none' }}
                 whileHover={{ scale: 1.04, y: -2 }}
               >
@@ -303,7 +303,7 @@ export default function LandingPage({ onEnterPortal }) {
           </motion.div>
 
           {/* Right Hero Block - 3D Stacked Carousel of Actual Posters */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, type: 'spring', stiffness: 70 }}
@@ -348,15 +348,15 @@ export default function LandingPage({ onEnterPortal }) {
                       }
                     }}
                   >
-                    <img 
-                      src={poster.url} 
-                      alt={poster.title} 
-                      style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+                    <img
+                      src={poster.url}
+                      alt={poster.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                     />
 
                     {/* Text info capsule on active poster only */}
                     {state.active && (
-                      <div 
+                      <div
                         style={{
                           position: 'absolute',
                           bottom: 0,
@@ -384,13 +384,13 @@ export default function LandingPage({ onEnterPortal }) {
               })}
 
               {/* Slide controls overlay */}
-              <button 
+              <button
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }}
                 style={{ position: 'absolute', left: '-20px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(12,35,64,0.1)', color: 'var(--cu-navy)', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 30, boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}
               >
                 <ChevronLeft size={18} />
               </button>
-              <button 
+              <button
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
                 style={{ position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(12,35,64,0.1)', color: 'var(--cu-navy)', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 30, boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}
               >
@@ -401,7 +401,7 @@ export default function LandingPage({ onEnterPortal }) {
             {/* Indicator dots */}
             <div style={{ display: 'flex', gap: '8px', marginTop: '20px' }}>
               {carouselPosters.map((_, idx) => (
-                <div 
+                <div
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   style={{
@@ -425,7 +425,7 @@ export default function LandingPage({ onEnterPortal }) {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(to bottom, rgba(224, 242, 254, 0.15) 0%, rgba(255, 253, 240, 0.15) 100%)', pointerEvents: 'none' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="about-grid">
-            
+
             <motion.div
               initial="hidden"
               whileInView="show"
@@ -437,11 +437,11 @@ export default function LandingPage({ onEnterPortal }) {
                 Legacy of Academic Leadership
               </h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '24px', fontSize: '0.98rem', lineHeight: 1.7 }}>
-                At Christ (Deemed to be University), our curriculum is designed around continuous learner feedback, academic rigor, and state-of-the-art computational tools. 
+                At Christ (Deemed to be University), our curriculum is designed around continuous learner feedback, academic rigor, and state-of-the-art computational tools.
                 Under the direction of Dr. Fr. Jossy P George and our experienced faculty heads, postgraduates build critical competencies for computing careers.
               </p>
-              
-              <button 
+
+              <button
                 onClick={() => onEnterPortal({ day: 2 })}
                 className="btn-secondary"
                 style={{ padding: '10px 22px', fontSize: '0.85rem' }}
@@ -451,7 +451,7 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.div>
 
             {/* Cards Grid with Framer Motion Staggered in View */}
-            <motion.div 
+            <motion.div
               className="about-cards-grid"
               initial="hidden"
               whileInView="show"
@@ -464,10 +464,10 @@ export default function LandingPage({ onEnterPortal }) {
                 { icon: <Building size={24} />, title: "Advanced Lab Spaces", desc: "Dedicated cloud computing infrastructures and software testbeds." },
                 { icon: <BookOpen size={24} />, title: "Holistic Core Guidelines", desc: "Briefings covering professional ethics, cyber security sensitization, and research methodologies." }
               ].map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="academic-panel" 
+                  className="academic-panel"
                   style={{ padding: '24px', background: '#ffffff', borderRadius: '14px' }}
                   whileHover={{ y: -6, scale: 1.02, border: '1.5px solid var(--cu-gold-bright)' }}
                 >
@@ -488,8 +488,8 @@ export default function LandingPage({ onEnterPortal }) {
       <section id="director-desk" style={{ padding: '90px 0', background: '#ffffff', position: 'relative' }}>
         <div className="container">
           <div className="director-grid">
-            
-            <motion.div 
+
+            <motion.div
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
@@ -499,7 +499,7 @@ export default function LandingPage({ onEnterPortal }) {
               <h2 style={{ fontSize: '2.2rem', margin: '12px 0 18px', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>
                 From the Director's Desk
               </h2>
-              
+
               {/* Premium signature quote box */}
               <div style={{ position: 'relative', borderLeft: '4px solid var(--cu-gold)', paddingLeft: '24px', margin: '24px 0', background: 'rgba(254, 252, 240, 0.45)', padding: '20px 24px', borderRadius: '0 12px 12px 0', border: '1px solid rgba(170,124,17,0.08)', borderLeftWidth: '5px' }}>
                 <span style={{ position: 'absolute', top: '-10px', left: '10px', fontSize: '5rem', color: 'rgba(170,124,17,0.06)', fontFamily: 'serif', lineHeight: 1, pointerEvents: 'none' }}>“</span>
@@ -507,12 +507,12 @@ export default function LandingPage({ onEnterPortal }) {
                   "Our vision is focused on holistic development. We encourage postgraduate scholars in Computer Science to pursue computing excellence, maintain an ethical compass, and innovate responsibly."
                 </p>
               </div>
-              
+
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.65, marginBottom: '28px' }}>
-                Dr. Fr. Jossy P George leads the Central Campus administration, guiding the department toward cutting-edge research outputs. 
+                Dr. Fr. Jossy P George leads the Central Campus administration, guiding the department toward cutting-edge research outputs.
                 His address on Day 2 of orientation establishes the core expectations of academic discipline, innovation, and leadership attributes.
               </p>
-              
+
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--cu-navy-light)', color: 'var(--cu-navy)', display: 'flex', alignItems: 'center', justify: 'center', border: '1px solid rgba(12,35,64,0.1)' }}>
                   <UserCheck size={22} />
@@ -525,7 +525,7 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.div>
 
             {/* Keynote address card */}
-            <motion.div 
+            <motion.div
               className="academic-panel"
               style={{ padding: '34px', background: 'var(--cu-gold-light)', borderRadius: '18px', border: '1.5px solid rgba(170, 124, 17, 0.15)' }}
               initial={{ opacity: 0, x: 30 }}
@@ -563,9 +563,9 @@ export default function LandingPage({ onEnterPortal }) {
                 </div>
               </div>
 
-              <motion.button 
+              <motion.button
                 onClick={() => onEnterPortal({ day: 2 })}
-                className="btn-primary" 
+                className="btn-primary"
                 style={{ width: '100%', marginTop: '22px', padding: '12px', fontSize: '0.82rem', borderRadius: '8px', justifyContent: 'center' }}
                 whileHover={{ scale: 1.02 }}
               >
@@ -580,7 +580,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* NEW: Curriculum Roadmap Timeline Section */}
       <section id="roadmap" style={{ padding: '90px 0', borderTop: '1px solid rgba(12, 35, 64, 0.06)', background: 'rgba(224, 242, 254, 0.18)', position: 'relative' }}>
         <div className="container">
-          
+
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <span className="badge">Academic Lifecycle</span>
             <h2 style={{ fontSize: '2.2rem', margin: '12px 0 10px', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>Curriculum Roadmap</h2>
@@ -590,7 +590,7 @@ export default function LandingPage({ onEnterPortal }) {
           </div>
 
           {/* Roadmap Horizontal Grid with Staggered animations */}
-          <motion.div 
+          <motion.div
             className="roadmap-grid"
             initial="hidden"
             whileInView="show"
@@ -606,7 +606,7 @@ export default function LandingPage({ onEnterPortal }) {
               { stage: "Stage 3", title: "Specialization & Labs", status: "Semester 3", desc: "Outbound retreats, research publications, special interest groups, and industry collaborative projects." },
               { stage: "Stage 4", title: "Corporate Placement", status: "Semester 4 & Beyond", desc: "Placement cell briefings, recruiting opportunities, internship applications, and portfolio reviews." }
             ].map((node, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={itemVariants}
                 className="academic-panel"
@@ -634,7 +634,7 @@ export default function LandingPage({ onEnterPortal }) {
       {/* Section 2: Programs Offered */}
       <section id="programs" style={{ padding: '90px 0' }}>
         <div className="container">
-          
+
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <span className="badge">Academic Programs</span>
             <h2 style={{ fontSize: '2.2rem', margin: '12px 0 10px', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>Flagship Postgraduate Programs</h2>
@@ -644,17 +644,17 @@ export default function LandingPage({ onEnterPortal }) {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }} className="programs-grid">
-            
+
             {/* MCA Card */}
-            <motion.div 
-              className="academic-panel" 
-              style={{ 
-                padding: '38px', 
-                background: 'linear-gradient(180deg, #ffffff 0%, var(--bg-secondary) 100%)', 
+            <motion.div
+              className="academic-panel"
+              style={{
+                padding: '38px',
+                background: 'linear-gradient(180deg, #ffffff 0%, var(--bg-secondary) 100%)',
                 border: '1px solid rgba(12,35,64,0.08)',
                 borderRadius: '18px',
-                display: 'flex', 
-                flexDirection: 'column', 
+                display: 'flex',
+                flexDirection: 'column',
                 gap: '16px'
               }}
               whileHover={{ y: -8, border: '1.5px solid var(--cu-navy)' }}
@@ -666,11 +666,11 @@ export default function LandingPage({ onEnterPortal }) {
                 </div>
                 <span className="badge" style={{ fontSize: '0.65rem' }}>2 Years (MCA)</span>
               </div>
-              
+
               <h3 style={{ fontSize: '1.3rem', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>
                 Master of Computer Applications (MCA)
               </h3>
-              
+
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 A highly comprehensive, application-focused curriculum covering modern software engineering, web application development, cloud architectures, database systems, and mobile systems programming. Designed to build elite technical leaders.
               </p>
@@ -682,17 +682,17 @@ export default function LandingPage({ onEnterPortal }) {
               </div>
 
               {/* Accordion Toggle Button */}
-              <button 
+              <button
                 onClick={() => setMcaExpanded(!mcaExpanded)}
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '6px', 
-                  background: 'none', 
-                  border: 'none', 
-                  color: 'var(--cu-navy)', 
-                  fontWeight: 800, 
-                  fontSize: '0.8rem', 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--cu-navy)',
+                  fontWeight: 800,
+                  fontSize: '0.8rem',
                   cursor: 'pointer',
                   padding: '4px 0',
                   outline: 'none',
@@ -730,8 +730,8 @@ export default function LandingPage({ onEnterPortal }) {
                   </div>
                 </div>
               </div>
-              
-              <motion.button 
+
+              <motion.button
                 onClick={() => onEnterPortal({ category: 'Technical' })}
                 className="btn-primary"
                 style={{ alignSelf: 'flex-start', marginTop: 'auto', padding: '10px 22px', fontSize: '0.82rem', borderRadius: '8px' }}
@@ -742,15 +742,15 @@ export default function LandingPage({ onEnterPortal }) {
             </motion.div>
 
             {/* MSc AIML Card */}
-            <motion.div 
-              className="academic-panel" 
-              style={{ 
-                padding: '38px', 
-                background: 'linear-gradient(180deg, #ffffff 0%, var(--cu-gold-light) 100%)', 
+            <motion.div
+              className="academic-panel"
+              style={{
+                padding: '38px',
+                background: 'linear-gradient(180deg, #ffffff 0%, var(--cu-gold-light) 100%)',
                 border: '1px solid rgba(170,124,17,0.15)',
                 borderRadius: '18px',
-                display: 'flex', 
-                flexDirection: 'column', 
+                display: 'flex',
+                flexDirection: 'column',
                 gap: '16px'
               }}
               whileHover={{ y: -8, border: '1.5px solid var(--cu-gold-bright)' }}
@@ -762,11 +762,11 @@ export default function LandingPage({ onEnterPortal }) {
                 </div>
                 <span className="badge-gold" style={{ fontSize: '0.65rem' }}>2 Years (MSc AIML)</span>
               </div>
-              
+
               <h3 style={{ fontSize: '1.3rem', color: 'var(--cu-navy-dark)', fontWeight: 800 }}>
                 MSc in Artificial Intelligence & ML
               </h3>
-              
+
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Tailored for the next generation of AI researchers and practitioners. Focuses on neural networks, deep learning algorithms, computer vision, natural language processing, ethical AI adoption, and advanced data modeling.
               </p>
@@ -778,17 +778,17 @@ export default function LandingPage({ onEnterPortal }) {
               </div>
 
               {/* Accordion Toggle Button */}
-              <button 
+              <button
                 onClick={() => setAimlExpanded(!aimlExpanded)}
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '6px', 
-                  background: 'none', 
-                  border: 'none', 
-                  color: 'var(--cu-gold)', 
-                  fontWeight: 800, 
-                  fontSize: '0.8rem', 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--cu-gold)',
+                  fontWeight: 800,
+                  fontSize: '0.8rem',
                   cursor: 'pointer',
                   padding: '4px 0',
                   outline: 'none',
@@ -826,8 +826,8 @@ export default function LandingPage({ onEnterPortal }) {
                   </div>
                 </div>
               </div>
-              
-              <motion.button 
+
+              <motion.button
                 onClick={() => onEnterPortal({ day: 3 })}
                 className="btn-primary"
                 style={{ alignSelf: 'flex-start', marginTop: 'auto', padding: '10px 22px', fontSize: '0.82rem', borderRadius: '8px' }}
@@ -845,7 +845,7 @@ export default function LandingPage({ onEnterPortal }) {
       <section id="placements" style={{ padding: '85px 0', borderTop: '1px solid rgba(12, 35, 64, 0.06)', borderBottom: '1px solid rgba(12, 35, 64, 0.06)', background: 'rgba(224, 242, 254, 0.18)', position: 'relative' }}>
         <div className="container">
           <div className="placements-grid">
-            
+
             <motion.div
               initial="hidden"
               whileInView="show"
@@ -857,10 +857,10 @@ export default function LandingPage({ onEnterPortal }) {
                 Corporate Outreach & Readiness
               </h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '24px', fontSize: '0.98rem', lineHeight: 1.7 }}>
-                Our corporate outreach cell aligns postgraduates with top recruiting firms like OpenText, Volvo Group, and Mphasis. 
+                Our corporate outreach cell aligns postgraduates with top recruiting firms like OpenText, Volvo Group, and Mphasis.
                 Student mentors and placement representatives brief cohorts on guidelines and requirements early in the program.
               </p>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '28px' }}>
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                   <CheckCircle size={18} style={{ color: 'var(--cu-gold)' }} />
@@ -872,7 +872,7 @@ export default function LandingPage({ onEnterPortal }) {
                 </div>
               </div>
 
-              <button 
+              <button
                 onClick={() => onEnterPortal({ category: 'Placements' })}
                 className="btn-primary"
                 style={{ padding: '12px 26px', fontSize: '0.85rem' }}
@@ -881,11 +881,11 @@ export default function LandingPage({ onEnterPortal }) {
               </button>
             </motion.div>
 
-            <motion.div 
-              className="academic-panel" 
-              style={{ 
-                padding: '40px', 
-                background: '#ffffff', 
+            <motion.div
+              className="academic-panel"
+              style={{
+                padding: '40px',
+                background: '#ffffff',
                 border: '1.5px solid rgba(12,35,64,0.08)',
                 textAlign: 'center',
                 borderRadius: '18px'
@@ -910,15 +910,15 @@ export default function LandingPage({ onEnterPortal }) {
       <section id="campus-life" style={{ padding: '90px 0', background: '#ffffff' }}>
         <div className="container">
           <div className="campus-grid">
-            
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               {[
                 { icon: <Library size={22} />, title: "Knowledge Resource Centres", desc: "Library connect briefing showing indexed database access with Dr. Sreekumar." },
                 { icon: <MapPin size={22} />, title: "Outbound Retreats", desc: "Dedicated retreat coordinates at Kengeri Campus, sustainability pledges and fresher talent showcase." }
               ].map((card, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
-                  className="academic-panel" 
+                  className="academic-panel"
                   style={{ padding: '24px', background: '#ffffff', display: 'flex', gap: '18px', alignItems: 'start', borderRadius: '14px' }}
                   whileHover={{ x: 6, border: '1.5px solid var(--cu-navy)' }}
                 >
@@ -944,11 +944,11 @@ export default function LandingPage({ onEnterPortal }) {
                 Wellbeing & Academic Support
               </h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '26px', fontSize: '0.98rem', lineHeight: 1.7 }}>
-                Our academic framework incorporates extensive student support. 
+                Our academic framework incorporates extensive student support.
                 From database and reference archives briefing sessions to stress management counseling coordinates, we prioritize student wellbeing.
               </p>
-              
-              <button 
+
+              <button
                 onClick={() => onEnterPortal({ query: 'Library' })}
                 className="btn-secondary"
                 style={{ padding: '10px 22px', fontSize: '0.85rem' }}
@@ -964,14 +964,14 @@ export default function LandingPage({ onEnterPortal }) {
       {/* Footer */}
       <footer style={{ background: 'var(--cu-navy-dark)', color: '#ffffff', padding: '75px 0 35px', borderTop: '1.5px solid rgba(255,255,255,0.04)' }}>
         <div className="container footer-grid">
-          
+
           {/* Col 1: Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <img 
-                src="/christ_logo.png" 
-                alt="Christ University Logo" 
-                style={{ height: '44px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} 
+              <img
+                src="/christ_logo.png"
+                alt="Christ University Logo"
+                style={{ height: '44px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
               />
             </div>
             <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
